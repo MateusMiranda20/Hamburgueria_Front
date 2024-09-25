@@ -4,7 +4,8 @@ import {
     RightContainer,
     Title,
     Form,
-    Input
+    Input,
+    Link
 } from "./styles"
 
 import { useForm } from "react-hook-form"
@@ -13,6 +14,7 @@ import * as yup from "yup"
 
 import { Button } from '../../components/Button'
 import logo from "../../assets/Hamburgueria-logo.png"
+
 
 import { api } from '../../services/api'
 
@@ -39,22 +41,28 @@ function Register() {
     })
 
     const onSubmit = async (data) => {
+
         try {
-            const response = await toast.promise(
-                api.post("/users", {
-                    name: data.name,
-                    email: data.email,
-                    password: data.password,
-                }),
+            const { status } = await api.post('/users', {
+                name: data.name,
+                email: data.email,
+                password: data.password,
+            },
                 {
-                    pending: 'Verificando seus dados',
-                    success: 'Cadastro efetuado com sucesso!👌',
-                    error: 'Ops, algo deu errado! Tente novamente. 🤯',
+                    validateStatus: () => true
                 }
-            )
-            console.log(response.data); // Processa a resposta conforme necessário
+            );
+
+            if (status === 200 || status === 201) {
+                toast.success('Conta criada com sucesso!');
+            } else if (status === 400) {
+                toast.error('Email já cadastrado! Faça o login para continuar');
+            } else {
+                throw new Error(); //qualquer outro erro manda o erro para o catch
+            }
+
         } catch (error) {
-            console.error("Erro na solicitação", error);
+            toast.error('Falha no sistema! tente novamente.')
         }
     }
 
@@ -69,9 +77,9 @@ function Register() {
                 <Title>Criar conta</Title>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                <Input>
+                    <Input>
                         <label>Nome</label>
-                        <input type="text" {...register("nome")} />
+                        <input type="text" {...register("name")} />
                         <p>{errors?.name?.message}</p>
                     </Input>
 
@@ -95,7 +103,9 @@ function Register() {
 
                     <Button type="submit" >Criar Conta</Button>
                 </Form>
-                <p>Já possui conta ? <a>Clique aqui.</a></p>
+                <p>
+                    Já possui conta ? <Link to="/Login"> Clique aqui.</Link>
+                </p>
             </RightContainer>
             <ToastContainer autoClose={4000} theme="colored" />
         </Container>

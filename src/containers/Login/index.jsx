@@ -4,7 +4,8 @@ import {
     RightContainer,
     Title,
     Form,
-    Input
+    Input, 
+    Link
 } from "./styles"
 
 import { useForm } from "react-hook-form"
@@ -84,7 +85,9 @@ return (
 
                 <Button type="submit" >Entrar</Button>
             </Form>
-            <p>Não possui conta? <a>Clique aqui.</a></p>
+            <p>
+                Não possui conta? <Link to="/cadastro"> Clique aqui.</Link>
+            </p>
         </RightContainer>
         <ToastContainer autoClose={4000} theme="colored" />
     </Container>

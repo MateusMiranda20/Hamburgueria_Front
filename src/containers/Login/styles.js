@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BackgroundLogin from "../../assets/Fundo negro.svg"
 import Background from "../../assets/Fundo-login.svg"
 
+
 export const Container  = styled.div`
     display: flex;
     height: 100vh;
@@ -102,4 +103,10 @@ export const Input  = styled.div`
         line-height: 80%;
         margin-left: 10px;
     }
+`
+
+export const Link = styled.a`
+
+    text-decoration: none;
+    color: #fff;
 `

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BackgroundLogin from "../../assets/Fundo negro.svg"
 import Background from "../../assets/Fundo-login.svg"
 
+
 export const Container  = styled.div`
     display: flex;
     height: 100vh;
@@ -52,6 +53,7 @@ export const RightContainer  = styled.div`
         font-family: 'poppins', sans-serif;
         font-weight: 400;
         font-style: normal;
+        cursor: pointer;
     }
 `
 export const Title  = styled.h1`
@@ -97,4 +99,9 @@ export const Input  = styled.div`
         line-height: 80%;
         margin-left: 10px;
     }
+`
+
+export const Link = styled.a`
+    text-decoration: none;
+    color: #fff;
 `
