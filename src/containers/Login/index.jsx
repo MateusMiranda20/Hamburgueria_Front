@@ -12,6 +12,8 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
+import { useNavigate } from "react-router-dom"
+
 import { Button } from '../../components/Button'
 import logo from "../../assets/Hamburgueria-logo.png"
 
@@ -21,6 +23,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
+
+    const navigate = useNavigate()
 
     const schema = yup
         .object({
@@ -46,7 +50,16 @@ function Login() {
                 }),
                 {
                     pending: 'Verificando seus dados',
-                    success: 'seja bem vindo(a) 👌',
+                    success: {
+                        render(){
+
+                            setTimeout(() => {
+                                navigate('/')
+                            }, 2000);
+
+                            return 'seja bem vindo(a) 👌'
+                        },
+                    },
                     error: 'Email ou senha Incorretos 🤯',
                 },
             )

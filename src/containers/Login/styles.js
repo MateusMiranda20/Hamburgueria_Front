@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import BackgroundLogin from "../../assets/Fundo negro.svg"
 import Background from "../../assets/Fundo-login.svg"
+import { Link as ReactLink } from "react-router-dom";
 
 
 export const Container  = styled.div`
@@ -105,8 +106,9 @@ export const Input  = styled.div`
     }
 `
 
-export const Link = styled.a`
+export const Link = styled(ReactLink)`
 
     text-decoration: none;
     color: #fff;
+    cursor: pointer;
 `
