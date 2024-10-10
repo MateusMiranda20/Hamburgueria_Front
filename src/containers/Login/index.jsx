@@ -43,7 +43,7 @@ function Login() {
 
     const onSubmit = async (data) => {
         try {
-            const response = await toast.promise(
+            const {data: {token}} = await toast.promise(
                 api.post("/session", {
                     email: data.email,
                     password: data.password,
@@ -63,7 +63,7 @@ function Login() {
                     error: 'Email ou senha Incorretos 🤯',
                 },
             )
-        console.log(response.data); // Processa a resposta conforme necessário
+        localStorage.setItem('token', token)
     } catch (error) {
         console.error("Erro na solicitação", error);
     }
