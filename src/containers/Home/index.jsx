@@ -1,4 +1,5 @@
 import { CategoriesCarousel } from "../../components/categoriesCarousel";
+import { OffersCarrosel } from "../../components/OffersCarousel";
 import {Banner, Container, Content} from "./styles"
 
 function Home() {
@@ -10,7 +11,7 @@ function Home() {
         <Container>
         <Content>
             <CategoriesCarousel />
-            <div>Carrosel produtos</div>
+            <OffersCarrosel />
         </Content>
         </Container>  
       </main>
