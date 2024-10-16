@@ -25,7 +25,7 @@ export const Container = styled.section`
     ),
     url('${FundoImg}');
    height: 100%;
-    background-size: cover;
+   background-size: cover;
 `
 export const Content = styled.div`
     padding-bottom: 70px;

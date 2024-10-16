@@ -12,9 +12,10 @@ export const Title = styled.h2`
     font-family: sans-serif;
     color: #9758a6;
     font-weight: 800;
-    padding-bottom: 12px;
+    padding-bottom: 20px;
     position: relative;
     text-align: center;
+    top: 10px;
 
     &::after{
         content:'' ;
