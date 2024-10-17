@@ -5,6 +5,12 @@ export const Container = styled.div`
     .carousel-item{
         padding: 40px;
     }
+
+    overflow-x: hidden;
+
+    .react-multi-carousel-list{
+        overflow: visible;
+    }
 `
 
 export const Title = styled.h2`
@@ -12,7 +18,7 @@ export const Title = styled.h2`
     font-family: sans-serif;
     color: #21a120;
     font-weight: 800;
-    padding-bottom: 25px;
+    padding-bottom: 55px;
     position: relative;
     text-align: center;
     top: 10px;
