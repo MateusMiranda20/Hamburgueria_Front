@@ -5,6 +5,14 @@ export const Container = styled.div`
     .carousel-item{
         padding: 40px;
     }
+
+    .react-multiple-carousel__arrow--right {
+        top: 50px;
+    }
+    .react-multiple-carousel__arrow--left {
+        top: 50px;
+    }
+
 `
 
 export const Title = styled.h2`
@@ -36,6 +44,7 @@ export const ContainerItems = styled.div`
     background-position: center;
     background-size: cover;
     border-radius: 20px;
+    cursor: pointer;
 
 
     display: flex;

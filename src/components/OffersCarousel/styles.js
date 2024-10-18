@@ -11,6 +11,13 @@ export const Container = styled.div`
     .react-multi-carousel-list{
         overflow: visible;
     }
+
+    .react-multiple-carousel__arrow--right {
+        top: 50px;
+    }
+    .react-multiple-carousel__arrow--left {
+        top: 50px;
+    }
 `
 
 export const Title = styled.h2`
@@ -22,6 +29,7 @@ export const Title = styled.h2`
     position: relative;
     text-align: center;
     top: 10px;
+    padding-bottom: 100px;
 
     &::after{
         content:'' ;

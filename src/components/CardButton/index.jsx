@@ -1,6 +1,6 @@
 import Cart from '../../assets/lixeira.svg'
 
-import { ContainerButton} from '../CardButton/styles'
+import { ContainerButton} from './styles'
 
 
 export function CardButton({...props}) {

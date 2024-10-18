@@ -10,11 +10,11 @@ export function CardProduct({product}) {
 
         <Container>
             <CardImage src={product.url} alt={product.name} />
-                <div>
-                    <p>{product.name}</p>
-                    <strong>{product.price}</strong>
-                </div>
-                <CardButton />
+            <div>
+                <p>{product.name}</p>
+                <strong>{product.currencyValue}</strong>
+            </div>
+            <CardButton></CardButton>
         </Container>
     )
 }
