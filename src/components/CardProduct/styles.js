@@ -12,6 +12,7 @@ export const Container = styled.div`
     cursor: pointer;
     box-shadow: rgba(0,0,0, 0.35) 0px 5px 15px;
 
+    position: relative;
     font-family: sans-serif;
 
     div{
@@ -40,5 +41,5 @@ export const Container = styled.div`
 export const CardImage = styled.img`
     height: 100px;
     position: absolute;
-    top: -20px
+    top: -50px
 `
