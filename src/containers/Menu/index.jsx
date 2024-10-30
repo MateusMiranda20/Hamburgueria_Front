@@ -3,19 +3,25 @@ import { Container, Banner, CategoryMenu, ProductMenu, CategoryButton } from './
 import { api } from '../../services/api';
 import { FormatPrice } from '../../utils/FormatPrice'
 import { CardProduct } from '../../components/CardProduct'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Menu() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [Filterproducts, setFilterproducts] = useState([]);
+  const [ActiveCategory, setActiveCategory] = useState(0);
+
+  const navigate = useNavigate()
+
 
   useEffect(() => {
-        
+
     async function loadCategories() {
-        const { data } = await api.get('/categories')
+      const { data } = await api.get('/categories')
 
-        const newCategory = [{id: 0, name:'Todas'}, ...data]
+      const newCategory = [{ id: 0, name: 'Todas' }, ...data]
 
-        setCategories(newCategory)
+      setCategories(newCategory)
     }
 
     async function loadProducts() {
@@ -23,47 +29,77 @@ function Menu() {
       const { data } = await api.get('/products');
 
       const newProducts = data.map((product) => (
-        {currencyValue: FormatPrice(product.price), ...product}
+        { currencyValue: FormatPrice(product.price), ...product }
       ))
 
       setProducts(newProducts)
 
     }
 
-   
+
     loadCategories()
     loadProducts()
-    }, []);
+  }, []);
+
+
+  useEffect(() => {
+    if (ActiveCategory === 0) {
+      setFilterproducts(products)
+    } else {
+      const newFilterProducts = products.filter(
+        (product) => product.category_id === ActiveCategory
+      )
+
+      setFilterproducts(newFilterProducts)
+    }
+  }, [products, ActiveCategory])
 
 
 
-    return (
-      <Container>
-        <Banner>
-          <h1>
-            O MELHOR 
-            <br/>
-            HAMBURGUER
-            <br/>
-            ESTÁ AQUI!
-            <br/>
-            <span>Esse cardápio está irresistível!</span>
-          </h1>
-        </Banner>
+  return (
+    <Container>
+      <Banner>
+        <h1>
+          O MELHOR
+          <br />
+          HAMBURGUER
+          <br />
+          ESTÁ AQUI!
+          <br />
+          <span>Esse cardápio está irresistível!</span>
+        </h1>
+      </Banner>
 
-        <CategoryMenu>
-          {categories.map((category) =>(
-            <CategoryButton key={category.id}> {category.name} </CategoryButton>
-          ))}
-        </CategoryMenu>
+      <CategoryMenu>
+        {categories.map((category) => (
+          <CategoryButton
+            key={category.id}
+            $isActiveCategory={category.id === ActiveCategory}
+            onClick={() => {
 
-        <ProductMenu>
-        { products.map((product) => (
-          <CardProduct product={product} key={product.id}/>
+              navigate(
+                {
+                pathname: '/cardapio',
+                search: `/categoria=${category.id}`
+              },
+                {
+                  replace: true
+                },
+              )
+              setActiveCategory(category.id)
+            }}
+
+          >{category.name} </CategoryButton>
         ))}
-        </ProductMenu>
-      </Container>
-    );
-  }
-  
-  export default Menu
+      </CategoryMenu>
+
+      <ProductMenu>
+        {Filterproducts.map((product) => (
+          <CardProduct product={product} key={product.id} />
+        ))}
+      </ProductMenu>
+    </Container>
+  );
+}
+
+export default Menu
