@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -52,8 +53,8 @@ export const ContainerItems = styled.div`
     padding: 20px 10px;
     width: 100%;
     height: 200px;
-
-    p{
+`
+export const ButtonItems = styled(Link)`
         color: #fff;
         background-color: rgba(0, 0, 0, 0.5);
         padding: 10px 30px;
@@ -62,6 +63,11 @@ export const ContainerItems = styled.div`
         font-weight: bold;
         font-family: sans-serif;
         margin-top: 100px;
+        border: none;
+        text-decoration: none;
         text-transform: capitalize; /* Faz com que a primeira letra de cada palavra seja maiúscula */
-    }
+
+        &:hover{
+            background-color: #9758a6;
+        }
 `
