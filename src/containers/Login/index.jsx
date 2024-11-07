@@ -18,6 +18,7 @@ import { Button } from '../../components/Button'
 import logo from "../../assets/Hamburgueria-logo.png"
 
 import { api } from '../../services/api'
+import { useUser } from '../../hooks/UserContext'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,6 +26,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Login() {
 
     const navigate = useNavigate()
+    const { putUserData } = useUser();
 
     const schema = yup
         .object({
@@ -43,7 +45,7 @@ function Login() {
 
     const onSubmit = async (data) => {
         try {
-            const {data: {token}} = await toast.promise(
+            const {data: userData} = await toast.promise(
                 api.post("/session", {
                     email: data.email,
                     password: data.password,
@@ -63,10 +65,12 @@ function Login() {
                     error: 'Email ou senha Incorretos 🤯',
                 },
             )
-        localStorage.setItem('token', token)
-    } catch (error) {
-        console.error("Erro na solicitação", error);
-    }
+            putUserData(userData)
+
+
+        } catch (error) {
+            console.error("Erro na solicitação", error);
+        }
 }
 
 return (
