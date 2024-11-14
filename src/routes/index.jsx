@@ -4,6 +4,7 @@ import Login from '../containers/Login'
 import Register from '../containers/Register'
 import Home from '../containers/Home'
 import Menu from '../containers/Menu'
+import { Header } from '/src/components/Header/index.jsx';
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +17,12 @@ export const router = createBrowserRouter([
     },
     {
         path: '/',
-        element: <Home />
+        element:(
+            <>
+            <Header />
+            <Home />
+            </>
+        ),
     },
     {
         path: '/cardapio',
