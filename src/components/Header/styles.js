@@ -27,9 +27,15 @@ export const Navigation = styled.nav`
         justify-content: center;
         gap: 20px;
     }
+
+    hr{
+        height: 24px;
+        border-radius: 1px solid #1f1f1f;
+    }
 `
 export const HeaderLink = styled(Link)`
-    color: #fff;
+    color: ${props => props.$isLink ? '#9758a6' : '#fff' };
+    border-bottom: ${props => props.$isLink ? '1px solid #9758a6' : 'none'};
     text-decoration: none;
     font-size: 14px;
     transition: color 200ms;
@@ -37,9 +43,6 @@ export const HeaderLink = styled(Link)`
     align-items: center;
     gap: 10px;
 
-    &:hover{
-        color: #9758a6;
-    }
 `
 export const Options = styled.div`
     display: flex;
