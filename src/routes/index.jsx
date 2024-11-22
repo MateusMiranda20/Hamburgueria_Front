@@ -4,6 +4,8 @@ import Login from '../containers/Login'
 import Register from '../containers/Register'
 import Home from '../containers/Home'
 import Menu from '../containers/Menu'
+import { Carrinho } from "../containers/Carrinho";
+import { Footer } from '/src/components/Footer/index.jsx';
 import { Header } from '/src/components/Header/index.jsx';
 
 export const router = createBrowserRouter([
@@ -21,6 +23,7 @@ export const router = createBrowserRouter([
             <>
             <Header />
             <Home />
+            <Footer />
             </>
         ),
     },
@@ -32,5 +35,11 @@ export const router = createBrowserRouter([
             <Menu />
             </>
         ),
+    }, 
+    {
+        path: '/carrinho',
+        element: (
+            <Carrinho />
+        )
     }
 ])
