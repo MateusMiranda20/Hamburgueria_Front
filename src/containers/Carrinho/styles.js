@@ -33,16 +33,6 @@ export const Title = styled.h1`
     padding-bottom: 12px;
     color: #61a120;
     text-align: center;
-
-    &::after{
-        position: absolute;
-        bottom: 350px;
-        left: calc(50% + -28px);
-        content: '';
-        width: 56px;
-        height: 5px;
-        background-color: #61a120;
-    }
 `
 export const Content = styled.div`
     display: grid;
