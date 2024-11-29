@@ -2,7 +2,9 @@ import { Table } from '../../components/Table/index.jsx'
 import { FormatPrice } from '../../utils/FormatPrice.js'
 import { useCart } from "../../hooks/CartContext";
 
-export function CartItems () {
+import { ProductImg, Button, Emptycart } from './styles.js'
+
+export function CartItems() {
     const { cartProducts, increaseProduct, decreaseProduct } = useCart()
     return (
         <Table.Root>
@@ -20,16 +22,28 @@ export function CartItems () {
                     cartProducts.map(product => (
                         <Table.Tr key={product.id}>
                             <Table.Td>
-                                <img src={product.url} />
+                                <ProductImg src={product.url} />
                             </Table.Td>
                             <Table.Td>{product.name}</Table.Td>
                             <Table.Td>{FormatPrice(product.price)}</Table.Td>
-                            <Table.Td>{product.quantity}</Table.Td>
+                            <Table.Td>
+                                <Button>
+                                    <button onClick={() => decreaseProduct(product.id)}>-</button>
+                                    {product.quantity}
+                                    <button onClick={() => increaseProduct(product.id)}>+</button>
+                                </Button>
+                            </Table.Td>
+                            <Table.Td>
+                                <div style={{ fontWeight: 'bold' }}>
+                                    {FormatPrice(product.quantity * product.price)}
+                                </div>
+                            </Table.Td>
                         </Table.Tr>
                     ))
-                ) : <div>Carrinho vazio</div> }
+                ) : <Emptycart>Carrinho vazio</Emptycart>}
+                                                 
             </Table.Body>
         </Table.Root>
-        
+
     )
 }

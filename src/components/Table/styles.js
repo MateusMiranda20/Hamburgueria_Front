@@ -6,7 +6,6 @@ export const Root = styled.table`
     border-collapse: collapse;
     background-color: #fff;
     border-radius: 20px;
-
 `
 
 export const Header = styled.thead``
@@ -17,6 +16,15 @@ export const Th = styled.th`
     padding: 16px;
     text-align: left;
     color: #000;
+    background-color: #484848;
+
+    &:last-child {
+        border-top-right-radius: 20px;
+    }    
+
+    &:first-child {
+        border-top-left-radius: 20px;
+    }  
     
 `
 

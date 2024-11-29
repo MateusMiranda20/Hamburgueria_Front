@@ -15,7 +15,7 @@ export const CartProvider = ({ children }) => {
             newProduct = cartProducts
 
             newProduct[cartIndex].quantity =
-            newProduct[cartIndex].quantity + 1
+                newProduct[cartIndex].quantity + 1
 
             SetCartProducts(newProduct)
         }
@@ -34,37 +34,37 @@ export const CartProvider = ({ children }) => {
         updateLocal([])
     }
 
-    const deletProduct = (product) => {
-        const newCart = cartProducts.filter((products) => products.id !== product.id)
+    const deletProduct = (productId) => {
+        const newCart = cartProducts.filter((products) => products.id !== productId)
 
         SetCartProducts(newCart)
-        updateLocal(decreaseProduct)
+        updateLocal(newCart)
     }
 
     const increaseProduct = (productId) => {
         const newProducts = cartProducts.map(prd => {
-            return prd.id === productId ? {...prd, quantity: prd.quantity + 1} : prd
-        } )
+            return prd.id === productId ? { ...prd, quantity: prd.quantity + 1 } : prd
+        })
 
         SetCartProducts(newProducts)
-        updateLocal(decreaseProduct)
+        updateLocal(newProducts)
     }
 
     const decreaseProduct = (productId) => {
-        const cartIndex = cartProducts.findIndex((prd) => prd.id === product.id)
+        const cartIndex = cartProducts.findIndex((prd) => prd.id === productId);
 
-        if (cartProducts[cartIndex]. quantity > 1) {
-            const decreaseProducts = cartProducts.map((prd) => {
-                return prd.id === productId ? {...prd, quantity: prd.quantity - 1}
-                : prd
-            })
-
-            SetCartProducts(decreaseProducts)
-            updateLocal(decreaseProduct)
+        if (cartIndex >= 0 && cartProducts[cartIndex].quantity > 1) {
+            // Reduz quantidade se for maior que 1
+            const decreasedProducts = cartProducts.map((prd) =>
+                prd.id === productId ? { ...prd, quantity: prd.quantity - 1 } : prd
+            );
+            SetCartProducts(decreasedProducts);
+            updateLocal(decreasedProducts);
         } else {
-            deletProduct(productId)
+            // Remove o produto se a quantidade for 1
+            deletProduct(productId);
         }
-    }
+    };
 
     const updateLocal = (products) => {
         localStorage.setItem('devburguer:cartInfo', JSON.stringify(products))
@@ -73,10 +73,9 @@ export const CartProvider = ({ children }) => {
     useEffect(() => {
         const loadProducts = localStorage.getItem('devburguer:cartInfo')
 
-        if (loadProducts ) {
+        if (loadProducts) {
             SetCartProducts(JSON.parse(loadProducts))
-        } else {
-            
+
         }
     }, [])
 
@@ -89,7 +88,7 @@ export const CartProvider = ({ children }) => {
                 deletProduct,
                 increaseProduct,
                 decreaseProduct
-                }}>
+            }}>
             {children}
         </CartContext.Provider>
     )
