@@ -1,5 +1,6 @@
 import { Banner, Title, Content, Container } from './styles'
-import {CartItems} from '../../components/CartItems'
+import {CartItems } from '../../components/CartItems'
+import {CartResume} from '../../components/CartResume'
 import Logo from '../../assets/Burguer.png'
 
 export function Carrinho() {
@@ -12,6 +13,7 @@ export function Carrinho() {
             <Title> Checkout - Pedidos</Title>
             <Content>
                 <CartItems />
+                <CartResume />
             </Content>
         </Container>
     )

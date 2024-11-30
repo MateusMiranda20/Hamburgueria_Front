@@ -34,3 +34,8 @@ export const Emptycart = styled.p`
     text-align: center;
     font-weight: bolder;
 `
+export const ThashImage = styled.img`
+   height: 30px;
+   width: 30px;
+   cursor: pointer;
+`

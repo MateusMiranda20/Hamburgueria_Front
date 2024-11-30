@@ -1,11 +1,12 @@
 import { Table } from '../../components/Table/index.jsx'
 import { FormatPrice } from '../../utils/FormatPrice.js'
 import { useCart } from "../../hooks/CartContext";
+import ThashIcons from "../../assets/Trash.svg"
 
-import { ProductImg, Button, Emptycart } from './styles.js'
+import { ProductImg, Button, Emptycart, ThashImage } from './styles.js'
 
 export function CartItems() {
-    const { cartProducts, increaseProduct, decreaseProduct } = useCart()
+    const { cartProducts, increaseProduct, decreaseProduct, deletProduct } = useCart()
     return (
         <Table.Root>
             <Table.Header>
@@ -15,6 +16,7 @@ export function CartItems() {
                     <Table.Th>Preços</Table.Th>
                     <Table.Th>Quantidade</Table.Th>
                     <Table.Th>Total</Table.Th>
+                    <Table.Th></Table.Th>
                 </Table.Tr>
             </Table.Header>
             <Table.Body>
@@ -38,6 +40,10 @@ export function CartItems() {
                                     {FormatPrice(product.quantity * product.price)}
                                 </div>
                             </Table.Td>
+                            <Table.Td>
+                                <ThashImage src={ThashIcons} alt="Lixeira" onClick={ () => deletProduct(product.id)}/>
+                            </Table.Td>
+                           
                         </Table.Tr>
                     ))
                 ) : <Emptycart>Carrinho vazio</Emptycart>}
