@@ -1,23 +1,76 @@
+import { toast } from "react-toastify"
+import { useEffect, useState } from "react"
+
+import { useNavigate } from "react-router-dom"
+import { useCart } from "../../hooks/CartContext"
+import { api } from "../../services/api"
+import { formatPrice } from '../../utils/formatPrice.js';
 import { Container, Button } from "./styles"
 
 
 export function CartResume () {
+
+    const [finalPrice, setFinalPrice] = useState(0)
+    const [deliveryTax] = useState(500)
+
+    const navigate = useNavigate()
+
+    const {cartProducts, clearCart} = useCart()
+
+    useEffect(() => {
+        const sumAll = cartProducts.reduce( (acc, current) => {
+            return current.price * current.quantity + acc;
+        }, 0)
+
+        setFinalPrice(sumAll)
+    }, [cartProducts]);
+
+    const submitOrder = async () => {
+        const products = cartProducts.map( (product ) => {
+            return {id: product.id, quantity: product.quantity}
+        }); 
+
+        try {
+            const { status } = await api.post('/orders', 
+                { products },
+                {
+                    validateStatus: () => true
+                }
+            );
+
+            if (status === 200 || status === 201) {
+                setTimeout(() => {
+                }, 2000);
+                navigate('/')
+
+                clearCart() 
+                toast.success('Pedido realizado com sucesso!');
+            } else if (status === 400) {
+                toast.error('Falha ao realizar o pedido');
+            } else {
+                throw new Error(); //qualquer outro erro manda o erro para o catch
+            }
+
+        } catch (error) {
+            toast.error('Falha no sistema! tente novamente.')
+        }
+    }
     return(
         <div>
             <Container>
             <div className="container-top">
                 <h2 className="title">Resumo do Pedido</h2>
                 <p className="itens">Itens</p>
-                <p className="itens-price">R$ 20,00</p>
+                <p className="itens-price">{formatPrice(finalPrice)}</p>
                 <p className="delivery-tax">Taxa entrega</p>
-                <p className="delivery-price">R$ 5,00</p>
+                <p className="delivery-price">{formatPrice(deliveryTax)}</p>
             </div>
             <div className="container-bottom">
                 <p>Total</p>
-                <p>R$ 25,00</p>
+                <p>{formatPrice(finalPrice + deliveryTax)}</p>
             </div>
         </Container>
-        <Button>Finalizar Pedido</Button>
+        <Button onClick={submitOrder}>Finalizar Pedido</Button>
         </div>
     )
 }

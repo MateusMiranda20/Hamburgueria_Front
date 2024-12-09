@@ -82,4 +82,10 @@ border-radius: 5px;
 color: #000;
 font-weight: 800;
 background-color: #9758a6;
+
+
+&:hover{    
+    background-color:#6F357C;
+   
+}
 `

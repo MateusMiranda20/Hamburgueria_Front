@@ -1,5 +1,5 @@
 import { Table } from '../../components/Table/index.jsx'
-import { FormatPrice } from '../../utils/FormatPrice.js'
+import { formatPrice } from '../../utils/formatPrice.js'
 import { useCart } from "../../hooks/CartContext";
 import ThashIcons from "../../assets/Trash.svg"
 
@@ -27,7 +27,7 @@ export function CartItems() {
                                 <ProductImg src={product.url} />
                             </Table.Td>
                             <Table.Td>{product.name}</Table.Td>
-                            <Table.Td>{FormatPrice(product.price)}</Table.Td>
+                            <Table.Td>{formatPrice(product.price)}</Table.Td>
                             <Table.Td>
                                 <Button>
                                     <button onClick={() => decreaseProduct(product.id)}>-</button>
@@ -37,7 +37,7 @@ export function CartItems() {
                             </Table.Td>
                             <Table.Td>
                                 <div style={{ fontWeight: 'bold' }}>
-                                    {FormatPrice(product.quantity * product.price)}
+                                    {formatPrice(product.quantity * product.price)}
                                 </div>
                             </Table.Td>
                             <Table.Td>
