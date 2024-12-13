@@ -1,4 +1,5 @@
-import { toast } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from "react"
 
 import { useNavigate } from "react-router-dom"
@@ -27,36 +28,57 @@ export function CartResume () {
 
     const submitOrder = async () => {
         const products = cartProducts.map( (product ) => {
-            return {id: product.id, quantity: product.quantity}
+            return {id: product.id, quantity: product.quantity, price: product.price}
         }); 
 
         try {
-            const { status } = await api.post('/orders', 
-                { products },
-                {
-                    validateStatus: () => true
-                }
-            );
+            const { data } = await api.post('/create-payment-intent', { products })
 
-            if (status === 200 || status === 201) {
-                setTimeout(() => {
-                }, 2000);
-                navigate('/')
+            navigate('/checkout', {
+                state: data,
+            })
 
-                clearCart() 
-                toast.success('Pedido realizado com sucesso!');
-            } else if (status === 400) {
-                toast.error('Falha ao realizar o pedido');
-            } else {
-                throw new Error(); //qualquer outro erro manda o erro para o catch
-            }
-
-        } catch (error) {
-            toast.error('Falha no sistema! tente novamente.')
+        } catch (err) {
+            toast.error('Erro, tente novamente!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
         }
+
+        // try {
+        //     const { status } = await api.post('/orders', 
+        //         { products },
+        //         {
+        //             validateStatus: () => true
+        //         }
+        //     );
+
+        //     if (status === 200 || status === 201) {
+        //         setTimeout(() => {
+        //         }, 2000);
+        //         navigate('/')
+
+        //         clearCart() 
+        //         toast.success('Pedido realizado com sucesso!');
+        //     } else if (status === 400) {
+        //         toast.error('Falha ao realizar o pedido');
+        //     } else {
+        //         throw new Error(); //qualquer outro erro manda o erro para o catch
+        //     }
+
+        // } catch (error) {
+        //     toast.error('Falha no sistema! tente novamente.')
+        // }
     }
     return(
         <div>
+            <ToastContainer autoClose={4000} theme="colored" />
             <Container>
             <div className="container-top">
                 <h2 className="title">Resumo do Pedido</h2>
