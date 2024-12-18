@@ -67,6 +67,10 @@
     opacity: 0.5;
     cursor: default;
   }
+
+  .status-title{
+    text-align: center;
+  }
   
   /* spinner/processing state, errors */
   .spinner,
