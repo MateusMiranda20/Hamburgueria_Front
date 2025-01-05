@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const Title = styled.h2`
     font-size: 30px;
     font-family: sans-serif;
-    color: #9758a6;
+    color: ${(props) =>props.theme.purple};
     font-weight: 800;
     padding-bottom: 20px;
     position: relative;
@@ -32,7 +32,7 @@ export const Title = styled.h2`
         bottom: 0;
         width: 56px;
         height: 4px;
-        background-color: #9758a6;
+        background-color: ${(props) =>props.theme.purple};
         left: 50%;
         transform: translateX(-50%);
         top: 60px;
@@ -55,7 +55,7 @@ export const ContainerItems = styled.div`
     height: 200px;
 `
 export const ButtonItems = styled(Link)`
-        color: #fff;
+        color: ${(props) =>props.theme.white};
         background-color: rgba(0, 0, 0, 0.5);
         padding: 10px 30px;
         border-radius: 18px;
@@ -68,6 +68,6 @@ export const ButtonItems = styled(Link)`
         text-transform: capitalize; /* Faz com que a primeira letra de cada palavra seja maiúscula */
 
         &:hover{
-            background-color: #9758a6;
+            background-color: ${(props) =>props.theme.purple};
         }
 `

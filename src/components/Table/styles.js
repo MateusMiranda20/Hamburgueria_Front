@@ -4,7 +4,7 @@ export const Root = styled.table`
 
     width: 90%;
     border-collapse: collapse;
-    background-color: #fff;
+    background-color: ${(props) =>props.theme.white};
     border-radius: 20px;
 `
 
@@ -16,7 +16,7 @@ export const Th = styled.th`
     padding: 16px;
     text-align: left;
     color: #000;
-    background-color: #484848;
+    background-color: ${(props) =>props.theme.secondBlack};
 
     &:last-child {
         border-top-right-radius: 20px;

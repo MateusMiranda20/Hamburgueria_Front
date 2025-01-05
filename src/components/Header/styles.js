@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background-color: #1f1f1f;
+    background-color: ${props => props.theme.mainBlack};
     width: 100%;
     height: 72px;
     padding: 0 56px;
@@ -30,12 +30,12 @@ export const Navigation = styled.nav`
 
     hr{
         height: 24px;
-        border-radius: 1px solid #1f1f1f;
+        border-radius: 1px solid ${(props) =>props.theme.mainBlack};
     }
 `
 export const HeaderLink = styled(Link)`
-    color: ${props => props.$isLink ? '#9758a6' : '#fff' };
-    border-bottom: ${props => props.$isLink ? '1px solid #9758a6' : 'none'};
+    color: ${props => props.$isLink ? props => props.theme.purple : props => props.theme.white };
+    border-bottom: ${props => props.$isLink ? `1px solid ${(props) =>props.theme.purple}` : 'none'};
     text-decoration: none;
     font-size: 14px;
     transition: color 200ms;
@@ -59,13 +59,13 @@ export const Profile = styled.div`
     align-items: center;
 
     P{
-        color: #fff;
+        color: ${(props) =>props.theme.white};
         line-height: 90%;
         font-weight: 300;
     }
 
     span{
-        color: #9758a6;
+        color: ${(props) =>props.theme.purple};
         font-weight: 700;
     }
 
@@ -78,7 +78,7 @@ export const LinkContainer = styled.div`
 `
 
 export const Button = styled.button`
-    color: #ff3205;
+    color: ${(props) =>props.theme.red};
     text-decoration: none;
     font-weight: 700;
     background-color: transparent;

@@ -8,7 +8,7 @@ export const Container = styled.div`
     padding: 16px;
     gap: 40px;  
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: ${(props) =>props.theme.white}fff;
     cursor: pointer;
     box-shadow: rgba(0,0,0, 0.35) 0px 5px 15px;
 
@@ -24,7 +24,7 @@ export const Container = styled.div`
     }
 
     p{
-        color: #ff8c05;
+        color: ${(props) =>props.theme.orange};
         font-size: 18px;
         line-height: 20px;
         font-weight: 700;
@@ -33,7 +33,7 @@ export const Container = styled.div`
 
     strong{
         font-size: 20px;
-        color: #363636;
+        color: ${(props) =>props.theme.black};
         font-weight: 800;
         line-height: 20px;
     }

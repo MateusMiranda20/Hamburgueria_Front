@@ -31,7 +31,7 @@ export const Title = styled.h1`
     font-size: 32px;
     font-weight: 800;
     padding-bottom: 12px;
-    color: #61a120;
+    color: ${(props) =>props.theme.gren};
     text-align: center;
 `
 export const Content = styled.div`

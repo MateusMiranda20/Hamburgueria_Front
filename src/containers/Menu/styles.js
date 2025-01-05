@@ -8,7 +8,7 @@ export const Container = styled.div `
 
     width: 100%;
     min-width: 100vh;
-    background-color: #f0f0f0;
+    background-color: ${(props) =>props.theme.secondWhite};
 
     background: 
     linear-gradient(
@@ -29,7 +29,7 @@ export const Banner = styled.div `
 
     background: url('${BannerFundoo}'), no-repeat;
     background-size: cover;
-    background-color: #1f1f1f;
+    background-color: ${(props) =>props.theme.mainBlack};
     background-position: center;
     
     color: #fafafa;
@@ -62,13 +62,13 @@ export const CategoryButton = styled(Link)`
     text-decoration: none;
     cursor: pointer;
     background: none;
-    color: ${(props) => (props.$isActiveCategory ? '#9758a6' : '#000')};
+    color: ${(props) => (props.$isActiveCategory ? `${(props) =>props.theme.purple}` : '#000')};
     font-size: 24px;
     font-weight: bold;
     padding-bottom: 5px;
     line-height: 20px;
     border: none;
-    border-bottom: ${ (props) => props.$isActiveCategory && '3px solid #9758a6'};
+    border-bottom: ${ (props) => props.$isActiveCategory && `3px solid ${(props) =>props.theme.purple}`};
 `
 export const ProductMenu = styled.div `
     display: grid;

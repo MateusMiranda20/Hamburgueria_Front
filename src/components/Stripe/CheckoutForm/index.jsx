@@ -49,7 +49,6 @@ export default function CheckoutForm() {
       });
 
       if (error) {
-        console.error('Erro do Stripe:', error);
         toast.error(`Erro no pagamento: ${error.message}`);
       } else if (paymentIntent && paymentIntent.status === 'succeeded') {
         // Enviar pedido ao backend

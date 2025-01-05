@@ -11,7 +11,7 @@ export const Button = styled.button`
     align-items: center;
     border: none;
     gap: 12px;
-    background-color: #fff;
+    background-color: ${(props) =>props.theme.white};
 
     button{
         display: flex;
@@ -19,13 +19,13 @@ export const Button = styled.button`
         align-items: center;
         width: 30px;
         height: 30px;
-        background-color: #9758a6;
+        background-color: ${(props) =>props.theme.purple};
         border-radius: 6px;
         transition: all 0.4s;
         border: none;
 
         &:hover{
-            background-color: #6f357c;
+            background-color: ${(props) =>props.theme.secondDarkPurple};
         }
     }
 `

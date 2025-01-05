@@ -5,12 +5,12 @@ export const ContainerButton = styled.button`
     height: 52px;
     border: 0;
     border-radius: 5px;
-    background-color: #9758A6;
+    background-color: ${(props) =>props.theme.purple};
     font-size: 30px;
     font-family: "Road Rage", sans-serif;
-    color: #fff;
+    color: ${(props) =>props.theme.white};
 
     &:hover{
-        background-color:#6F357C;
+        background-color:${(props) =>props.theme.secondDarkPurple};
     }
 `

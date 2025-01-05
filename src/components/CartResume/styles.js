@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-background-color: #484848;
+background-color: ${(props) =>props.theme.secondBlack};
 border-radius: 20px;
 display: flex;
 flex-direction: column;
@@ -28,7 +28,7 @@ margin-bottom: 20px;
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: ${(props) =>props.theme.white};
     color: #000;
     padding: 15px;
     width: 100%;
@@ -81,11 +81,10 @@ border: none;
 border-radius: 5px;
 color: #000;
 font-weight: 800;
-background-color: #9758a6;
+background-color: ${(props) =>props.theme.purple};
 
 
 &:hover{    
-    background-color:#6F357C;
-   
+    background-color:${(props) =>props.theme.secondDarkPurple};
 }
 `
