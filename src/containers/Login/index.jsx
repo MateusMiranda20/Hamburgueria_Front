@@ -56,7 +56,11 @@ function Login() {
                         render(){
 
                             setTimeout(() => {
-                                navigate('/')
+                                if (userData?.admin) {
+                                    navigate('/admin/pedidos')
+                                } else {
+                                    navigate('/')
+                                }
                             }, 2000);
 
                             return 'seja bem vindo(a) 👌'
