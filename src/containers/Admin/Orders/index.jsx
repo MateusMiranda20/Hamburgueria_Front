@@ -1,8 +1,7 @@
-
-export function Orders() {
+export function Orders(){
     return (
         <div>
-            <h2>Pedidos</h2>
+            <h1>Orde,</h1>
         </div>
     )
-}
+} 
