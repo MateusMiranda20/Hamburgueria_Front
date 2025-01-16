@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     background-color: ${props => props.theme.mainBlack};
     width: 100%;
-    height: 72px;
+    height: 62px;
     padding: 0 56px;
 `
 export const Content = styled.div`
