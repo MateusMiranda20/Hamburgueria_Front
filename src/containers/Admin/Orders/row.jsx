@@ -11,10 +11,18 @@ import Typography from '@mui/material/Typography';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useState } from 'react';
+import { formatDate } from '../../../utils/formatDate';
+import { ProductImg, SelectStatus } from './styles'
+import { orderStatus } from './orderStatus';
+import { api } from '../../../services/api';
 
 export function Row(props) {
     const { row } = props;
     const [open, setOpen] = useState(false);
+
+    async function newStatusOrder(id, status) {
+        await api.put(`orders/${id}`, { status })
+    }
 
     return (
         <>
@@ -22,7 +30,7 @@ export function Row(props) {
                 <TableCell>
                     <IconButton
                         aria-label="expand row"
-                        size="small"
+                        size="small" x
                         onClick={() => setOpen(!open)}
                     >
                         {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -32,8 +40,14 @@ export function Row(props) {
                     {row.orderId}
                 </TableCell>
                 <TableCell>{row.name}</TableCell>
-                <TableCell>{row.date}</TableCell>
-                <TableCell>{row.status}</TableCell>
+                <TableCell>{formatDate(row.date)}</TableCell>
+                <TableCell>
+                    <SelectStatus options={orderStatus.filter((status) => status.id !== 0)}
+                        placeholder={'Status'}
+                        defaultValue={orderStatus.find((status) => status.value === row.status || null,)}
+                        onChange={(status) => newStatusOrder(row.orderId, status.value)}
+                    />
+                </TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -48,7 +62,7 @@ export function Row(props) {
                                         <TableCell>Quantidade</TableCell>
                                         <TableCell>Produtos</TableCell>
                                         <TableCell>Categoria</TableCell>
-                                        <TableCell></TableCell>
+                                        <TableCell>Imagem produtos</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -59,7 +73,9 @@ export function Row(props) {
                                             </TableCell>
                                             <TableCell>{product.name}</TableCell>
                                             <TableCell>{product.category}</TableCell>
-                                            <TableCell> <img src={product.url} alt={product.name} /></TableCell>
+                                            <TableCell>
+                                                <ProductImg src={product.url} alt={product.name} />
+                                            </TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
