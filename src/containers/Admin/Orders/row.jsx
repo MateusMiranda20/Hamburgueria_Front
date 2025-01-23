@@ -16,12 +16,21 @@ import { ProductImg, SelectStatus } from './styles'
 import { orderStatus } from './orderStatus';
 import { api } from '../../../services/api';
 
-export function Row(props) {
-    const { row } = props;
+export function Row({ row, setOrders, orders }) {
     const [open, setOpen] = useState(false);
 
     async function newStatusOrder(id, status) {
-        await api.put(`orders/${id}`, { status })
+        try {
+            await api.put(`orders/${id}`, { status });
+
+            const newOrders = orders.map((order) => order._id === id ? { ...order, status } : order,
+            );
+
+            setOrders(newOrders)
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -89,6 +98,8 @@ export function Row(props) {
 }
 
 Row.propTypes = {
+    ordres: PropTypes.array.isRequired,
+    setOrders: PropTypes.func.isRequired,
     row: PropTypes.shape({
         orderId: PropTypes.number.isRequired,
         name: PropTypes.number.isRequired,
