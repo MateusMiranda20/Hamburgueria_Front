@@ -40,6 +40,20 @@ export function Orders() {
         setRows(newRows)
     }, [filterOredrs])
 
+    useEffect(() => {
+        if (activeStatus === 0) {
+            setFilterOrders(orders)
+        } else {
+            const statusIndex = orderStatus.findIndex((item) => item.id === activeStatus)
+
+            const newFilterOrders = orders.filter((order) => order.status === orderStatus[statusIndex].value)
+
+            setFilterOrders[newFilterOrders]
+        };
+    }, [orders])
+
+ 
+
 
     function handStatus(status) {
 

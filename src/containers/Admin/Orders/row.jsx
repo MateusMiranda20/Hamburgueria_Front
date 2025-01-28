@@ -55,6 +55,7 @@ export function Row({ row, setOrders, orders }) {
                         placeholder={'Status'}
                         defaultValue={orderStatus.find((status) => status.value === row.status || null,)}
                         onChange={(status) => newStatusOrder(row.orderId, status.value)}
+                        menuPortalTarget={document.body}
                     />
                 </TableCell>
             </TableRow>
