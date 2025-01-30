@@ -64,3 +64,9 @@ export const Select = styled(ReactSelect)``
 export const SubmitButton = styled(Button)`
     margin-top: 50px;
 `
+export const ErrorMenseger = styled.span`
+    color: ${(props) => props.theme.darkRed};
+    font-size: 12px;
+    line-height: 80%;
+    font-weight: 600;
+`
