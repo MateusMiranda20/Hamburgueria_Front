@@ -62,7 +62,7 @@ export const LabelUpload = styled.label`
 export const Select = styled(ReactSelect)``
 
 export const SubmitButton = styled(Button)`
-    margin-top: 50px;
+    margin-top:30px;
 `
 export const ErrorMenseger = styled.span`
     color: ${(props) => props.theme.darkRed};

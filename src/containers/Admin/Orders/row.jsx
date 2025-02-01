@@ -29,7 +29,7 @@ export function Row({ row, setOrders, orders }) {
             setOrders(newOrders)
 
         } catch (error) {
-            console.log(error)
+            
         }
     }
 

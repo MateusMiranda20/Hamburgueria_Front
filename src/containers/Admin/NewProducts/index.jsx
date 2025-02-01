@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { Image } from "@phosphor-icons/react";
 import { api } from "../../../services/api";
 
-import { Container, Form, InputGroup, Label, Input, LabelUpload, Select, SubmitButton, ErrorMenseger } from './styles'
+import { Container, Form, InputGroup, Label, Input, LabelUpload, Select, SubmitButton, ErrorMenseger, ContainerCheckbox } from './styles'
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -12,6 +12,7 @@ const schema = yup.object({
     name: yup.string().required('Digite o nome do produto'),
     price: yup.number().positive().required('Digite o preço do produto').typeError('Digite o preço do produto'),
     category: yup.object().required('Selecione uma categoria'),
+    offer: yup.boolean(),
     file: yup.mixed().
         test('required', 'Carregue arquivos até 3mb', (value) => {
             return value && value.lenght > 0
@@ -31,7 +32,7 @@ export function NewProducts() {
     useEffect(() => {
         async function loadCategories() {
             const { data } = await api.get('/categories')
-            console.log(data)
+
             setCategories(data)
         }
 
@@ -48,13 +49,18 @@ export function NewProducts() {
         productFormData.append('price', data.price * 100);
         productFormData.append('category_id', data.category.id);
         productFormData.append('file', data.file[0]);
+        productFormData.append('offer', data.offer);
 
         await toast.promise(api.post('/products', productFormData), {
             pending: 'Adicionando o produto',
             success: 'Produto adicionado com sucesso',
-            error: 'Erro ao adicionar o produto'
+            error: 'Erro ao adicionar o produto, tente novamente!'
         });
-        
+
+        setTimeout(() => {
+            navigate('/admin/produtos');
+        }, 2000)
+
     };
 
     return (
@@ -76,7 +82,7 @@ export function NewProducts() {
                     <LabelUpload>
                         <Image />
                         <input type="file"
-                            {...register({ field })}
+                            {...register('file')}
                             accept="image/png, image/jpeg"
                             onChange={(value) => {
                                 setFileName(value.target?.files[0]?.name);
@@ -106,8 +112,18 @@ export function NewProducts() {
                     />
                     <ErrorMenseger>{errors?.category?.message}</ErrorMenseger>
                 </InputGroup>
+
+                <InputGroup>
+                    <ContainerCheckbox>
+                        < input type="checkbox"
+                            {...register('offer')}
+                        />
+                        <Label>Produto em Oferta?</Label>
+                    </ContainerCheckbox>
+                </InputGroup>
+
                 <SubmitButton>
-                    Adicionar Produto
+                    Editar Produto
                 </SubmitButton>
             </Form>
         </Container>

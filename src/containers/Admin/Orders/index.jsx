@@ -28,7 +28,7 @@ export function Orders() {
             setOrders(data)
             setFilterOrders(data)
 
-            console.log(data)
+          
         }
 
         loadOrders();
