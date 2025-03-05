@@ -7,8 +7,8 @@ import Menu from '../containers/Menu'
 import { Carrinho } from "../containers/Carrinho";
 import { Checkout } from "../containers/Checkout";
 import { CompletePayment } from "../containers/CompletePayment";
-import { UserLayout } from "./../layout/UserLayout/index.js";
-import { AdminLyout } from "./../layout/AdminLayout/index.jsx";
+import { UserLayout } from "../../src/layout/UserLayout"
+import { AdminLyout } from "./../layout/AdminLayout";
 import { Orders } from "../containers/Admin/Orders"
 import { Products } from "../containers/Admin/Products"
 import { EditProduct } from "../containers/Admin/EditProduct"
