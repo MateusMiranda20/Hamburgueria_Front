@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './routes';
-import GlobalStyles from './styles/GlobalStyles';
+import GlobalStyles from './styles/GlobalStyles.js';
 import AppProvider from './hooks';
 import { Elements } from '@stripe/react-stripe-js';
 import stripePromise from './config/stripeConfig';
