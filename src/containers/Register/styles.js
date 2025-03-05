@@ -7,6 +7,7 @@ export const Container  = styled.div`
     display: flex;
     height: 100vh;
     width: 100vw;
+    overflow: hidden;
 `
 export const LeftContainer  = styled.div`
    background: url('${BackgroundLogin}');
@@ -33,9 +34,7 @@ export const RightContainer  = styled.div`
    
    display: flex;
    align-items: center;
-   justify-content: center;
    flex-direction: column;
-
     background: url('${Background}');
     background-color: #1e1e1e;
 
@@ -60,11 +59,11 @@ export const Title  = styled.h1`
    font-family: "Road Rage", sans-serif;
    font-size: 40px;
    color: ${(props) =>props.theme.white};
+   margin-top: 4px;
 `
 export const Form  = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 5px;
     padding: 20px;
     width: 100%;
     max-width: 400px;
@@ -72,7 +71,7 @@ export const Form  = styled.form`
 export const Input  = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 3px;
     width: 100%;
     
     input{
