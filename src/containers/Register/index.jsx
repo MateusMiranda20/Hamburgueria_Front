@@ -59,7 +59,7 @@ function Register() {
 
             if (status === 200 || status === 201) {
                 setTimeout(() => {
-                    useNavigate('/Login')
+                    navigate('/Login')
                 }, 2000);
                 toast.success('Conta criada com sucesso!');
             } else if (status === 400) {

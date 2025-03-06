@@ -3,7 +3,7 @@ import { Container, Banner, CategoryMenu, ProductMenu, CategoryButton } from './
 import { api } from '../../services/api';
 import { formatPrice } from '../../utils/formatPrice'
 import { CardProduct } from '../../components/CardProduct'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Menu() {
   const [categories, setCategories] = useState([]);
