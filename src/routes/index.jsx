@@ -18,7 +18,7 @@ export function Router() {
     return (
         <Routes>
             <Route path="/" element={<UserLayout />}>
-                <Route path="/" element={<Home />} />
+                <Route index element={<Home />} />
                 <Route path="/cardapio" element={<Menu />} />
                 <Route path="/carrinho" element={<Carrinho />} />
                 <Route path="/checkout" element={<Checkout />} />
