@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'http://localhost:4000'
+    baseURL: 'https://devburguer-api.onrender.com' || "http://localhost:4000",
+    withCredentials: true
   });
 
   api.interceptors.request.use((config) => {
