@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 
-import { useNavigate, Link  } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import { Button } from '../../components/Button'
 import logo from "../../assets/Hamburgueria-logo.png"
