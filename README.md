@@ -12,31 +12,34 @@ Este é o frontend do **DevBurguer**, uma aplicação desenvolvida com **React**
 
 ## 📂 Estrutura do Projeto
 
-DEVBURGUR-FRONTEND/
-│-- public/                   # Arquivos estáticos, como favicon, manifest e imagens públicas
-│-- src/                       # Código-fonte principal do frontend
-│   ├── assets/                # Recursos visuais, como imagens e ícones
-│   ├── components/            # Componentes reutilizáveis da aplicação
-│   ├── config/                # Configurações do projeto
-│   ├── containers/            # Componentes maiores que agrupam outros menores
-│   ├── hooks/                 # Hooks personalizados para lógica de estado e efeitos
-│   ├── layout/                # Definição de estrutura visual e organização de telas
-│   ├── routes/                # Configuração das rotas do React Router
-│   ├── services/              # Comunicação com APIs externas, incluindo Stripe
-│   ├── styles/                # Estilos globais e tema da aplicação
-│   ├── utils/                 # Funções auxiliares e utilitárias
-│   ├── App.jsx                # Componente principal que contém a estrutura do app
-│   ├── index.jsx              # Arquivo de entrada, renderiza o App
-│   ├── main.jsx               # Inicializa o React e configura a aplicação
-│
-│-- .eslintrc.json             # Configuração do ESLint para padronização de código
-│-- .gitignore                 # Arquivos que devem ser ignorados pelo Git
-│-- .prettierrc.json           # Configuração do Prettier para formatação de código
-│-- index.html                 # Template HTML principal para renderizar o React
-│-- package.json               # Dependências e scripts do projeto
-│-- README.md                  # Documentação do projeto
-│-- vite.config.js             # Configuração do Vite para build e dev server
-│-- yarn.lock                  # Controle de versões das dependências do Yarn
+DEVBURGUER-FRONTEND/
+│-- public/
+│-- src/
+│   ├── assets/
+│   ├── components/
+│   ├── config/
+│   ├── containers/
+│   ├── hooks/
+│   ├── layout/
+│   ├── routes/
+│   ├── services/
+│   ├── styles/
+│   ├── utils/
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   ├── index.jsx
+│   ├── main.jsx
+│-- .env
+│-- .gitignore
+│-- .eslintrc.json
+│-- .prettierrc.json
+│-- index.html
+│-- package.json
+│-- README.md
+│-- vite.config.js
+│-- yarn.lock
+
 
 ## 🛠️ Como Rodar o Projeto?
 
