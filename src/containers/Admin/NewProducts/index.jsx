@@ -107,6 +107,7 @@ export function NewProducts() {
                                 getOptionLabel={(category) => category.name}
                                 getOptionValue={(category) => category.id}
                                 placeholder='Categorias'
+                                {...register('category')}
                             />
                         )}
                     />
