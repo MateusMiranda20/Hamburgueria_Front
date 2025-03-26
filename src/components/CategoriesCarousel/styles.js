@@ -50,9 +50,11 @@ export const ContainerItems = styled.div`
 
     display: flex;
     align-items: center;
-    padding: 20px 10px;
+    padding: 30px 0px;
     width: 100%;
-    height: 200px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 `
 export const ButtonItems = styled(Link)`
         color: ${(props) =>props.theme.white};
