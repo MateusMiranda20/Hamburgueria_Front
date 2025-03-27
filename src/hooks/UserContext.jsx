@@ -17,7 +17,7 @@ const UserContext = createContext({});
         };
 
         useEffect(() => {
-            const userInfoLocalStoge = localStorage.getItem('devburguer:userData ')
+            const userInfoLocalStoge = localStorage.getItem('devburguer:userData')
 
             if (userInfoLocalStoge) {
                 setUserInfo(JSON.parse(userInfoLocalStoge))
